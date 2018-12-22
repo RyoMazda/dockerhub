@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  jupyter:
+    build: .
+    volumes:
+      - ./work:/work
+    ports:
+      - 8765:8765
