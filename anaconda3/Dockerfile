@@ -29,3 +29,12 @@ RUN pip install --upgrade pip && \
     mkdir -p $(jupyter --data-dir)/nbextensions && \
     cd $(jupyter --data-dir)/nbextensions && \
     git clone https://github.com/lambdalisue/jupyter-vim-binding vim_binding
+
+# for matplotlib Japanese font
+WORKDIR /tmp
+RUN curl -L  "https://oscdl.ipa.go.jp/IPAexfont/ipaexg00301.zip" > font.zip && \
+    unzip font.zip && rm font.zip && \
+    mv ipaexg00301/ipaexg.ttf /opt/conda/lib/python3.7/site-packages/matplotlib/mpl-data/fonts/ttf/ipaexg.ttf && \
+    rm -r ipaexg00301
+RUN echo "font.family : IPAexGothic" >>  /opt/conda/lib/python3.7/site-packages/matplotlib/mpl-data/matplotlibrc
+RUN rm -r ~/.cache
