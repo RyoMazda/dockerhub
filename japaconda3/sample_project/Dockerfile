@@ -1,4 +1,4 @@
-FROM ryomazda/japaconda3:18.12
+FROM ryomazda/japaconda3:5.2.0
 
 # install Python Libraries
 #RUN pip install --upgrade pip && \
