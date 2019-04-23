@@ -4,7 +4,7 @@
 cd sample_project
 docker-compose build
 docker-compose up -d
-# access to localhost:8765 through web browser and put "password"
+# access to localhost:8787 through web browser and put "password"
 ```
 
 ## PyTest

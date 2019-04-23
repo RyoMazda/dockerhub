@@ -24,4 +24,7 @@ COPY jupyter_notebook_config.py /root/.jupyter/
 EXPOSE 8765
 ENV PYTHONPATH=/work
 
+# turn on jupyter vim_binding extension if you like
+# RUN jupyter nbextension enable vim_binding/vim_binding
+
 CMD jupyter notebook

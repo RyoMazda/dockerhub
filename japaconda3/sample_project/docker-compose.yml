@@ -6,4 +6,4 @@ services:
     volumes:
       - ./work:/work
     ports:
-      - 8765:8765
+      - 8787:8765

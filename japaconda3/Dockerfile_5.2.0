@@ -12,6 +12,16 @@ RUN pip install --upgrade pip && \
     pip install \
     mecab-python3
 
+# MeCab NEologd
+# https://github.com/neologd/mecab-ipadic-neologd
+WORKDIR /opt
+RUN git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git && \
+    cd mecab-ipadic-neologd && \
+    ./bin/install-mecab-ipadic-neologd -n -y -a
+# Configure dictionary for MeCab at /etc/mecabrc
+RUN sed -i "s@/var/lib/mecab/dic/debian@/usr/lib/x86_64-linux-gnu/mecab/dic/mecab-ipadic-neologd@g" /etc/mecabrc
+ENV MECABRC /etc/mecabrc
+
 # CRF++ (for cabocha)
 WORKDIR /opt
 COPY CRF++-0.58.tar.gz /opt/CRF++-0.58.tar.gz
@@ -34,15 +44,6 @@ RUN cd cabocha-0.69/python && \
     python setup.py build_ext && \
     python setup.py install && \
     sudo ldconfig
-
-# MeCab NEologd
-# https://github.com/neologd/mecab-ipadic-neologd
-WORKDIR /opt
-RUN git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git && \
-    cd mecab-ipadic-neologd && \
-    ./bin/install-mecab-ipadic-neologd -n -y -a
-# Configure dictionary for MeCab at /etc/mecabrc
-RUN sed -i "s@/var/lib/mecab/dic/debian@/usr/lib/x86_64-linux-gnu/mecab/dic/mecab-ipadic-neologd@g" /etc/mecabrc
 
 # go back to the home of the root
 WORKDIR /root
