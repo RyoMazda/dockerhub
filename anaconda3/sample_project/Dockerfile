@@ -1,4 +1,4 @@
-FROM ryomazda/anaconda3:5.2.0
+FROM ryomazda/anaconda3:2019.07
 
 # install Python Libraries
 RUN pip install --upgrade pip && \
@@ -12,7 +12,7 @@ COPY work/ $WORKDIR/
 
 # for jupyter
 COPY jupyter_notebook_config.py /root/.jupyter/
-EXPOSE 8765
+EXPOSE 8888
 ENV PYTHONPATH=/work
 
 # turn on jupyter vim_binding extension if you like

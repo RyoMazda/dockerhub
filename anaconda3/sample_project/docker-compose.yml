@@ -1,9 +1,9 @@
 version: '3'
 
 services:
-  jupyter:
+  anaconda3-jupyter:
     build: .
     volumes:
       - ./work:/work
     ports:
-      - 8765:8765
+      - 8765:8888

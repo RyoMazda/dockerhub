@@ -1,9 +1,9 @@
 version: '3'
 
 services:
-  jupyter:
+  japaconda3-jupyter:
     build: .
     volumes:
       - ./work:/work
     ports:
-      - 8787:8765
+      - 8787:8888
