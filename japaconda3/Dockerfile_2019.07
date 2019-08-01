@@ -1,12 +1,12 @@
 FROM ryomazda/anaconda3:2019.07
 
 # MeCab
-RUN apt-get update && apt-get -y upgrade && \
-    apt-get -y install \
+RUN apt-get update && apt-get -y install \
     mecab \
     mecab-ipadic-utf8 \
     libmecab-dev \
-    swig
+    swig \
+  && rm -rf /var/lib/apt/lists/*
 
 # MeCab NEologd
 # https://github.com/neologd/mecab-ipadic-neologd
