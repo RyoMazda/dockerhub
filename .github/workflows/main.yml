@@ -1,0 +1,27 @@
+name: publish_docker
+on: [push]
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Run a one-line script
+        run: echo Hello, world!
+      - name: ls
+        run: ls
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+  jupyterlab:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@jupyterlab
+      - name: Publish to Dockerhub
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: ryomazda/jupyterlab
+          username: ryomazda
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          workdir: jupyterlab
+          tag_names: true
