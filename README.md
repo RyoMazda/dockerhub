@@ -7,7 +7,7 @@ Dockerfiles for the docker images pushed on https://hub.docker.com/u/ryomazda.
 * matplotlib with Japanese fonts enabled
 * jupyterlab with vim settings
 
-### Usage
+#### Usage
 ```bash
 docker run --rm -it -p 8888:8888 -v $PWD:/work ryomazda/jupyterlab
 # Go to localhost:8888 through your browser and type "password" as password
