@@ -16,7 +16,7 @@ jobs:
   jupyterlab:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@jupyterlab
+      - uses: actions/checkout@master
       - name: Publish to Dockerhub
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
