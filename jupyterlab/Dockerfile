@@ -34,4 +34,5 @@ COPY overrides.json /usr/local/share/jupyter/lab/settings/
 
 WORKDIR /work
 
+EXPOSE 8888
 CMD jupyter lab
