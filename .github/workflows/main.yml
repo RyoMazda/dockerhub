@@ -17,7 +17,6 @@ jobs:
           target: jupyterlab
           tags: latest
       - name: japaterlab
-        needs: jupyterlab
         uses: docker/build-push-action@v1
         with:
           path: jupyterlab
@@ -28,7 +27,6 @@ jobs:
           target: japaterlab
           tags: latest
       - name: nlp_course
-        needs: japaterlab
         uses: docker/build-push-action@v1
         with:
           path: jupyterlab
