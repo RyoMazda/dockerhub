@@ -62,6 +62,7 @@ RUN git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git && \
 # Configure dictionary for MeCab at /etc/mecabrc
 ENV MECABRC="/etc/mecabrc"
 RUN sed -i "s@/var/lib/mecab/dic/debian@/usr/lib/x86_64-linux-gnu/mecab/dic/mecab-ipadic-neologd@g" ${MECABRC}
+WORKDIR /work
 
 # https://pypi.org/project/mecab-python3/
 RUN pip install mecab-python3

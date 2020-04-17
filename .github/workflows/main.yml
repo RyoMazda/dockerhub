@@ -6,26 +6,26 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@master
-      - name: jupyterlab
-        uses: docker/build-push-action@v1
-        with:
-          path: jupyterlab
-          username: ryomazda
-          password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: ryomazda/jupyterlab
-          tag_with_ref: true
-          target: jupyterlab
-          tags: latest
-      - name: japaterlab
-        uses: docker/build-push-action@v1
-        with:
-          path: jupyterlab
-          username: ryomazda
-          password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: ryomazda/japaterlab
-          tag_with_ref: true
-          target: japaterlab
-          tags: latest
+      # - name: jupyterlab
+      #   uses: docker/build-push-action@v1
+      #   with:
+      #     path: jupyterlab
+      #     username: ryomazda
+      #     password: ${{ secrets.DOCKER_PASSWORD }}
+      #     repository: ryomazda/jupyterlab
+      #     tag_with_ref: true
+      #     target: jupyterlab
+      #     tags: latest
+      # - name: japaterlab
+      #   uses: docker/build-push-action@v1
+      #   with:
+      #     path: jupyterlab
+      #     username: ryomazda
+      #     password: ${{ secrets.DOCKER_PASSWORD }}
+      #     repository: ryomazda/japaterlab
+      #     tag_with_ref: true
+      #     target: japaterlab
+      #     tags: latest
       - name: nlp_course
         uses: docker/build-push-action@v1
         with:
