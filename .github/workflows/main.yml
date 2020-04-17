@@ -4,6 +4,11 @@ jobs:
   build_push_docker:
     runs-on: ubuntu-latest
     steps:
+      - name: checkout
+        uses: actions/checkout@master
+      - name: test
+        run: ls
+        shell: bash
       - name: jupyterlab
         uses: docker/build-push-action@v1
         with:
@@ -14,7 +19,7 @@ jobs:
           tag_with_ref: true
           target: jupyterlab
           tags: latest
-      - name: jupyterlab
+      - name: japaterlab
         uses: docker/build-push-action@v1
         with:
           path: jupyterlab
