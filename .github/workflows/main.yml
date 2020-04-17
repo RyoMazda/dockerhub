@@ -6,9 +6,6 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@master
-      - name: test
-        run: ls
-        shell: bash
       - name: jupyterlab
         uses: docker/build-push-action@v1
         with:
@@ -20,6 +17,7 @@ jobs:
           target: jupyterlab
           tags: latest
       - name: japaterlab
+        needs: jupyterlab
         uses: docker/build-push-action@v1
         with:
           path: jupyterlab
@@ -28,4 +26,15 @@ jobs:
           repository: ryomazda/japaterlab
           tag_with_ref: true
           target: japaterlab
+          tags: latest
+      - name: nlp_course
+        needs: japaterlab
+        uses: docker/build-push-action@v1
+        with:
+          path: jupyterlab
+          username: ryomazda
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: ryomazda/nlp_course
+          tag_with_ref: true
+          target: nlp_course
           tags: latest
