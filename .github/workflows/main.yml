@@ -1,17 +1,26 @@
-name: publish_docker
-on:
-  release:
-    types: [published]
+name: build_push_docker
+on: push
 jobs:
-  jupyterlab:
+  build_push_docker:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - name: Publish to Dockerhub
-        uses: elgohr/Publish-Docker-Github-Action@master
+      - name: jupyterlab
+        uses: docker/build-push-action@v1
         with:
-          name: ryomazda/jupyterlab
+          path: jupyterlab
           username: ryomazda
           password: ${{ secrets.DOCKER_PASSWORD }}
-          workdir: jupyterlab
-          tag_names: true
+          repository: ryomazda/jupyterlab
+          tag_with_ref: true
+          target: jupyterlab
+          tags: latest
+      - name: jupyterlab
+        uses: docker/build-push-action@v1
+        with:
+          path: jupyterlab
+          username: ryomazda
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: ryomazda/japaterlab
+          tag_with_ref: true
+          target: japaterlab
+          tags: latest
