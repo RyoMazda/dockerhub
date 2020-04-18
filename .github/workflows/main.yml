@@ -1,38 +1,34 @@
-name: build_push_docker
 on: push
+  push:
+    branches: [master]
+  release:
+    types: [published]
 jobs:
   build_push_docker:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
-        uses: actions/checkout@master
-      - name: jupyterlab
-        uses: docker/build-push-action@v1
+      - uses: actions/checkout@master
+      - uses: docker/build-push-action@v1
         with:
           path: jupyterlab
           username: ryomazda
           password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: ryomazda/jupyterlab
           tag_with_ref: true
           target: jupyterlab
-          tags: latest
-      - name: japaterlab
-        uses: docker/build-push-action@v1
+          repository: ryomazda/jupyterlab
+      - uses: docker/build-push-action@v1
         with:
           path: jupyterlab
           username: ryomazda
           password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: ryomazda/japaterlab
           tag_with_ref: true
           target: japaterlab
-          tags: latest
-      - name: nlp_course
-        uses: docker/build-push-action@v1
+          repository: ryomazda/japaterlab
+      - uses: docker/build-push-action@v1
         with:
           path: jupyterlab
           username: ryomazda
           password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: ryomazda/nlp_course
           tag_with_ref: true
           target: nlp_course
-          tags: latest
+          repository: ryomazda/nlp_course
