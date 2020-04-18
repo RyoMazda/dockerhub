@@ -4,7 +4,7 @@ on:
   release:
     types: [published]
 jobs:
-  build_push_docker:
+  jupyterlab:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
@@ -32,3 +32,31 @@ jobs:
           tag_with_ref: true
           target: nlp_course
           repository: ryomazda/nlp_course
+  jupyterlab_cuda:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: docker/build-push-action@v1
+        with:
+          path: jupyterlab_cuda
+          username: ryomazda
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          tag_with_ref: true
+          target: jupyterlab
+          repository: ryomazda/jupyterlab_cuda
+      - uses: docker/build-push-action@v1
+        with:
+          path: jupyterlab_cuda
+          username: ryomazda
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          tag_with_ref: true
+          target: japaterlab
+          repository: ryomazda/japaterlab_cuda
+      - uses: docker/build-push-action@v1
+        with:
+          path: jupyterlab_cuda
+          username: ryomazda
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          tag_with_ref: true
+          target: nlp_course
+          repository: ryomazda/nlp_course_cuda
