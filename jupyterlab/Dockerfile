@@ -83,5 +83,6 @@ RUN pip install \
     transformers
 
 # Pretrained Models
-COPY jawiki.all_vectors.100d.txt.bz2 /pretrained_models/
-COPY BERT-base_mecab-ipadic-bpe-32k_whole-word-mask /pretrained_models/BERT-base_mecab-ipadic-bpe-32k_whole-word-mask
+# TODO: Create shell script
+# COPY jawiki.all_vectors.100d.txt.bz2 /pretrained_models/
+# COPY BERT-base_mecab-ipadic-bpe-32k_whole-word-mask /pretrained_models/BERT-base_mecab-ipadic-bpe-32k_whole-word-mask
