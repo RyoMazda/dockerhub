@@ -38,7 +38,8 @@ jobs:
       - uses: actions/checkout@master
       - uses: docker/build-push-action@v1
         with:
-          path: jupyterlab_cuda
+          path: jupyterlab
+          dockerfile: jupyterlab/Dockerfile_cuda
           username: ryomazda
           password: ${{ secrets.DOCKER_PASSWORD }}
           tag_with_ref: true
@@ -46,7 +47,8 @@ jobs:
           repository: ryomazda/jupyterlab_cuda
       - uses: docker/build-push-action@v1
         with:
-          path: jupyterlab_cuda
+          path: jupyterlab
+          dockerfile: jupyterlab/Dockerfile_cuda
           username: ryomazda
           password: ${{ secrets.DOCKER_PASSWORD }}
           tag_with_ref: true
@@ -54,7 +56,8 @@ jobs:
           repository: ryomazda/japaterlab_cuda
       - uses: docker/build-push-action@v1
         with:
-          path: jupyterlab_cuda
+          path: jupyterlab
+          dockerfile: jupyterlab/Dockerfile_cuda
           username: ryomazda
           password: ${{ secrets.DOCKER_PASSWORD }}
           tag_with_ref: true

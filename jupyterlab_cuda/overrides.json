@@ -1,5 +1,0 @@
-{
-  "@jupyterlab/codemirror-extension:commands": {
-    "keyMap": "vim"
-  }
-}
