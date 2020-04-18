@@ -1,17 +1,34 @@
-name: publish_docker
 on:
+  push:
+    branches: [master]
   release:
     types: [published]
 jobs:
-  jupyterlab:
+  build_push_docker:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - name: Publish to Dockerhub
-        uses: elgohr/Publish-Docker-Github-Action@master
+      - uses: docker/build-push-action@v1
         with:
-          name: ryomazda/jupyterlab
+          path: jupyterlab
           username: ryomazda
           password: ${{ secrets.DOCKER_PASSWORD }}
-          workdir: jupyterlab
-          tag_names: true
+          tag_with_ref: true
+          target: jupyterlab
+          repository: ryomazda/jupyterlab
+      - uses: docker/build-push-action@v1
+        with:
+          path: jupyterlab
+          username: ryomazda
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          tag_with_ref: true
+          target: japaterlab
+          repository: ryomazda/japaterlab
+      - uses: docker/build-push-action@v1
+        with:
+          path: jupyterlab
+          username: ryomazda
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          tag_with_ref: true
+          target: nlp_course
+          repository: ryomazda/nlp_course
