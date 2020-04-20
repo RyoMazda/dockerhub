@@ -41,7 +41,7 @@ docker build -t ryomazda/nlp_course:local --target nlp_course .
 ```
 
 ### jupyterlab_cuda
-* based on official pytorch image for cuda10.1 & cudnn7
+* based on the official pytorch image for cuda10.1 & cudnn7
 * jupyterlab with vim extension
 * matplotlib with Japanese fonts enabled
 
@@ -49,10 +49,11 @@ Usage
 ```sh
 docker run --rm -it -p 8888:8888 -v $PWD:/work ryomazda/jupyterlab_cuda
 ```
+The password is `password`.
 
 Local build
 ```sh
-cd jupyterlab_cuda
+cd jupyterlab
 docker build -t ryomazda/jupyterlab_cuda:local --target jupyterlab_cuda .
 # japaterlab_cuda
 docker build -t ryomazda/japaterlab_cuda:local --target japaterlab .
