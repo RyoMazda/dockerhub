@@ -67,24 +67,3 @@ WORKDIR /work
 
 # https://pypi.org/project/mecab-python3/
 RUN pip install mecab-python3
-
-
-# --------------------------
-# For NLP course
-# --------------------------
-FROM japaterlab as nlp_course
-
-# Install Python Libraries
-RUN pip install \
-    pytest \
-    pandas \
-    scikit-learn \
-    torch \
-    torchtext \
-    transformers
-
-# Pretrained Models
-# TODO: Create shell script
-COPY download_pretrained_models.sh .
-RUN sh download_pretrained_models.sh
-# COPY BERT-base_mecab-ipadic-bpe-32k_whole-word-mask /pretrained_models/BERT-base_mecab-ipadic-bpe-32k_whole-word-mask
