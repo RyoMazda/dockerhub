@@ -78,11 +78,13 @@ FROM japaterlab as nlp_course
 RUN pip install \
     pytest \
     pandas \
+    scikit-learn \
     torch \
     torchtext \
     transformers
 
 # Pretrained Models
 # TODO: Create shell script
-# COPY jawiki.all_vectors.100d.txt.bz2 /pretrained_models/
+COPY download_pretrained_models.sh .
+RUN sh download_pretrained_models.sh
 # COPY BERT-base_mecab-ipadic-bpe-32k_whole-word-mask /pretrained_models/BERT-base_mecab-ipadic-bpe-32k_whole-word-mask
