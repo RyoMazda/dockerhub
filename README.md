@@ -30,16 +30,6 @@ cd jupyterlab
 docker build -t ryomazda/japaterlab:local --target japaterlab .
 ```
 
-### nlp_course
-* based on [japaterlab](#japaterlab)
-* pytest, torch, torchtext, transformers are installed
-
-Local build
-```sh
-cd jupyterlab
-docker build -t ryomazda/nlp_course:local --target nlp_course .
-```
-
 ### jupyterlab_cuda
 * based on the official pytorch image for cuda10.1 & cudnn7
 * jupyterlab with vim extension
@@ -57,6 +47,4 @@ cd jupyterlab
 docker build -t ryomazda/jupyterlab_cuda:local --target jupyterlab_cuda .
 # japaterlab_cuda
 docker build -t ryomazda/japaterlab_cuda:local --target japaterlab .
-# nlp_course_cuda
-docker build -t ryomazda/nlp_course_cuda:local --target nlp_course .
 ```
