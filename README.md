@@ -37,14 +37,26 @@ docker build -t ryomazda/japaterlab:local --target japaterlab .
 
 Usage
 ```sh
-docker run --rm -it -p 8888:8888 -v $PWD:/work ryomazda/jupyterlab_cuda
+docker run --gpus all --rm -it -p 80:8888 -v $PWD:/work ryomazda/jupyterlab_cuda
+# or japaterlab
+docker run --gpus all --rm -it -p 80:8888 -v $PWD:/work ryomazda/japaterlab_cuda
 ```
 The password is `password`.
 
+See [this](how_to_use_gcp_instance_with_gpu.md) as an example usage with GCP.
+
 Local build
 ```sh
-cd jupyterlab
-docker build -t ryomazda/jupyterlab_cuda:local --target jupyterlab_cuda .
-# japaterlab_cuda
-docker build -t ryomazda/japaterlab_cuda:local --target japaterlab .
+docker build \
+  -t ryomazda/jupyterlab_cuda:local \
+  -f jupyterlab/Dockerfile_cuda \
+  --target jupyterlab \
+  jupyterlab
+
+# japaterlab
+docker build \
+  -t ryomazda/japaterlab_cuda:local \
+  -f jupyterlab/Dockerfile_cuda \
+  --target japaterlab \
+  jupyterlab
 ```
