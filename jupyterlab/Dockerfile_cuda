@@ -1,10 +1,10 @@
-FROM pytorch/pytorch:1.4-cuda10.1-cudnn7-devel as jupyterlab
+FROM pytorch/pytorch:1.5-cuda10.1-cudnn7-devel as jupyterlab
 
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 RUN apt-get update && apt-get install -y \
-    unzip \
-    # For jupyterlab extension
-    nodejs \
+    curl \
+    unzip && \
+    curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
+    apt-get install -y nodejs \
     && rm -rf /var/lib/apt/lists/*
 
 # Install jupyter lab
@@ -32,7 +32,6 @@ COPY jupyter_notebook_config.py /root/.jupyter/
 COPY overrides.json /usr/local/share/jupyter/lab/settings/
 
 WORKDIR /work
-ENV PYTHONPATH=/work
 
 EXPOSE 8888
 CMD jupyter lab

@@ -33,7 +33,6 @@ COPY jupyter_notebook_config.py /root/.jupyter/
 COPY overrides.json /usr/local/share/jupyter/lab/settings/
 
 WORKDIR /work
-ENV PYTHONPATH=/work
 
 EXPOSE 8888
 CMD jupyter lab
