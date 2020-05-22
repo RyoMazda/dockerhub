@@ -29,7 +29,7 @@ GUI or CUI
   - `Container` option should be un-checked
   - `Boot disk`:
     - `Operating system`: `Deep Learning on Linux`
-    - `Version`: `Deep Learning Image: Base m46 (with CUDA 10.0)`
+    - `Version`: `GPU Optimized Debian m32 (with CUDA 10.0`
     - `Boot disk type`: `Standard persistent disk` may be fine
     - `Size`: Depending on your dataset, fair amount of storage (like ~100GB) is recommended
   - `Identity and API access`: `Allow full access to all Cloud APIs` may be the easiest option
@@ -46,7 +46,7 @@ gcloud beta compute instances create my-gpu-instance \
   --maintenance-policy=TERMINATE \
   --accelerator=type=nvidia-tesla-k80,count=1 \
   --image-project=ml-images \
-  --image=c1-deeplearning-common-cu100-20191112 \
+  --image=c0-common-gce-gpu-image-20200128 \
   --scopes=default,bigquery,storage-full \
   --boot-disk-size=100GB \
 ```
