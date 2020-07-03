@@ -1,5 +1,4 @@
-FROM python:3.7.7-slim-buster as jupyterlab
-ENV PACKAGE_DIR /usr/local/lib/python3.7/site-packages
+FROM python:3.8.3-slim-buster as jupyterlab
 
 RUN apt update && apt install -y \
     curl \
@@ -21,6 +20,7 @@ RUN jupyter labextension install jupyterlab_vim
 
 # For matplotlib Japanese font
 RUN pip install matplotlib
+ENV PACKAGE_DIR /usr/local/lib/python3.8/site-packages
 RUN curl -L "https://ipafont.ipa.go.jp/IPAexfont/IPAexfont00201.zip" > font.zip && \
     unzip font.zip && rm font.zip && \
     mv IPAexfont00201/ipaexg.ttf ${PACKAGE_DIR}/matplotlib/mpl-data/fonts/ttf/ipaexg.ttf && \
