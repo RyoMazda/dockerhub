@@ -3,7 +3,7 @@ Dockerfiles for the docker images pushed on https://hub.docker.com/u/ryomazda.
 
 ## Images
 ### jupyterlab
-* python3.7.7 on slim-buster
+* python3.8.3 on slim-buster
 * jupyterlab with vim extension
 * matplotlib with Japanese fonts enabled
 
@@ -15,23 +15,30 @@ The password is `password`.
 
 Local build
 ```sh
-cd jupyterlab
-docker build -t ryomazda/jupyterlab:local --target jupyterlab .
+docker build -t ryomazda/jupyterlab:local --target jupyterlab jupyterlab
 ```
 
 ### japaterlab
 * based on [jupyterlab](#jupyterlab)
-* `mecab` with [neologd dictionary](https://github.com/neologd/mecab-ipadic-neologd)
-* mecab-python3 is installed
+* `mecab` & mecab-python3 & [neologd dictionary](https://github.com/neologd/mecab-ipadic-neologd) are installed
+  * The default dictionary is `/var/lib/mecab/dic/debian` which is liked to `/var/lib/mecab/dic/ipadic-utf8`
+  * You should specify the path to the dictionary when you run mecab or edit `/etc/mecabrc` to change dictionary
+  * The neologd dictionaries are in `/opt/neologd` which is the latest at the time of the build and `/opt/neologd-0.0.6` which is for reproducibility.
+
+Usage
+```sh
+docker run --rm -it -p 8888:8888 -v $PWD:/work ryomazda/japaterlab
+```
+The password is `password`.
 
 Local build
 ```sh
-cd jupyterlab
-docker build -t ryomazda/japaterlab:local --target japaterlab .
+docker build -t ryomazda/japaterlab:local --target japaterlab jupyterlab
 ```
 
 ### jupyterlab_cuda
 * based on the official pytorch image for cuda10.1 & cudnn7
+  * python 3.7
 * jupyterlab with vim extension
 * matplotlib with Japanese fonts enabled
 

@@ -56,13 +56,22 @@ RUN apt update && apt install -y \
 # MeCab NEologd
 # https://github.com/neologd/mecab-ipadic-neologd
 WORKDIR /opt
+# Install from the release since we want reproducibility
+RUN curl -L "https://github.com/neologd/mecab-ipadic-neologd/archive/v0.0.6.zip"  --output neologd006.zip && \
+    unzip neologd006.zip && rm neologd006.zip && \
+    cd mecab-ipadic-neologd-0.0.6 && \
+        mkdir /opt/neologd-0.0.6 && \
+        ./bin/install-mecab-ipadic-neologd -n -y -a -p /opt/neologd-0.0.6 && \
+        cd .. && \
+    rm -rf mecab-ipadic-neologd-0.0.6
+# Install the latest version as well
 RUN git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git && \
     cd mecab-ipadic-neologd && \
-    ./bin/install-mecab-ipadic-neologd -n -y -a
-# Configure dictionary for MeCab at /etc/mecabrc
-ENV MECABRC="/etc/mecabrc"
-RUN sed -i "s@/var/lib/mecab/dic/debian@/usr/lib/x86_64-linux-gnu/mecab/dic/mecab-ipadic-neologd@g" ${MECABRC}
+        mkdir /opt/neologd && \
+        ./bin/install-mecab-ipadic-neologd -n -y -a -p /opt/neologd && \
+         cd .. && \
+    rm -rf mecab-ipadic-neologd
 WORKDIR /work
 
 # https://pypi.org/project/mecab-python3/
-RUN pip install mecab-python3
+RUN pip install unidic-lite mecab-python3
