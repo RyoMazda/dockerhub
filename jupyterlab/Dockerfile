@@ -74,4 +74,4 @@ RUN git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git && \
 WORKDIR /work
 
 # https://pypi.org/project/mecab-python3/
-RUN pip install unidic-lite mecab-python3
+RUN pip install mecab-python3
