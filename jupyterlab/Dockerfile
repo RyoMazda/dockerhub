@@ -3,20 +3,20 @@ FROM python:3.8.3-slim-buster as jupyterlab
 RUN apt update && apt install -y \
     curl \
     unzip \
-    # For jupyterlab
+    # For jupyterlab extension
     nodejs npm \
     && rm -rf /var/lib/apt/lists/*
 
 # Install jupyter lab
-RUN pip install 'jupyterlab<2.0.0'
-# Unfortunately jupyterlab vim extension below does not support v2 yet.
-# It's about to be supported: https://github.com/jwkvam/jupyterlab-vim/pull/115
+RUN pip install 'jupyterlab==2.1.5'
 
 # Install jupyterlab Extensions:
 # - vim
 #   https://github.com/jwkvam/jupyterlab-vim
-RUN jupyter labextension install jupyterlab_vim
-
+# RUN jupyter labextension install jupyterlab_vim
+# Unfortunately this original repo hasn't been updated since Jupy 2019 so let's use forked one.
+# https://github.com/jwkvam/jupyterlab-vim/issues/113
+RUN jupyter labextension install @axlair/jupyterlab_vim
 
 # For matplotlib Japanese font
 RUN pip install matplotlib
@@ -74,4 +74,4 @@ RUN git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git && \
 WORKDIR /work
 
 # https://pypi.org/project/mecab-python3/
-RUN pip install mecab-python3
+RUN pip install unidic-lite mecab-python3
