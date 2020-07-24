@@ -24,6 +24,14 @@ jobs:
           tag_with_ref: true
           target: japaterlab
           repository: ryomazda/japaterlab
+      - uses: docker/build-push-action@v1
+        with:
+          path: jupyterlab
+          username: ryomazda
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          tag_with_ref: true
+          target: nlplab
+          repository: ryomazda/nlplab
   jupyterlab_cuda:
     runs-on: ubuntu-latest
     steps:
@@ -46,3 +54,12 @@ jobs:
           tag_with_ref: true
           target: japaterlab
           repository: ryomazda/japaterlab_cuda
+      - uses: docker/build-push-action@v1
+        with:
+          path: jupyterlab
+          dockerfile: jupyterlab/Dockerfile_cuda
+          username: ryomazda
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          tag_with_ref: true
+          target: nlplab
+          repository: ryomazda/nlplab_cuda

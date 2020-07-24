@@ -19,22 +19,17 @@ docker build -t ryomazda/jupyterlab:local --target jupyterlab jupyterlab
 ```
 
 ### japaterlab
-* based on [jupyterlab](#jupyterlab)
+* Based on [jupyterlab](#jupyterlab)
 * `mecab` & mecab-python3 & [neologd dictionary](https://github.com/neologd/mecab-ipadic-neologd) are installed
   * The default dictionary is `/var/lib/mecab/dic/debian` which is liked to `/var/lib/mecab/dic/ipadic-utf8`
   * You should specify the path to the dictionary when you run mecab or edit `/etc/mecabrc` to change dictionary
   * The neologd dictionaries are in `/opt/neologd` which is the latest at the time of the build and `/opt/neologd-0.0.6` which is for reproducibility.
+* Usage is same as that of jupyterlab
 
-Usage
-```sh
-docker run --rm -it -p 8888:8888 -v $PWD:/work ryomazda/japaterlab
-```
-The password is `password`.
+### nlplab
+* Based on [japaterlab](#japaterlab)
+* Some NLP packages are pre-installed.
 
-Local build
-```sh
-docker build -t ryomazda/japaterlab:local --target japaterlab jupyterlab
-```
 
 ### jupyterlab_cuda
 * based on the official pytorch image for cuda10.1 & cudnn7
