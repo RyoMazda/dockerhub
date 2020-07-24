@@ -13,6 +13,17 @@ docker run --rm -it -p 8888:8888 -v $PWD:/work ryomazda/jupyterlab
 ```
 The password is `password`.
 
+Note that changing the password or using better authentication is highly encouraged for security reasons especially if you run jupyter on the remote server which is accessible from the internet.
+
+C.f. To change password before running jupyter
+```sh
+docker run --rm -it -p 8888:8888 -v $PWD:/work ryomazda/jupyterlab bash
+/work# jupyter notebook password
+Enter password: ****
+Verify password: ****
+/work# jupyter lab
+```
+
 Local build
 ```sh
 docker build -t ryomazda/jupyterlab:local --target jupyterlab jupyterlab
