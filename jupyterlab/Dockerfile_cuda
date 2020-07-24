@@ -75,3 +75,12 @@ WORKDIR /work
 
 # https://pypi.org/project/mecab-python3/
 RUN pip install unidic-lite mecab-python3
+
+
+# --------------------------
+# For NLP Lab
+# --------------------------
+FROM japaterlab as nlplab
+
+COPY requirements-nlplab.txt .
+RUN pip install -r requirements-nlplab.txt
