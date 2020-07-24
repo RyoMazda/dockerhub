@@ -61,5 +61,5 @@ jobs:
           username: ryomazda
           password: ${{ secrets.DOCKER_PASSWORD }}
           tag_with_ref: true
-          target: japaterlab
+          target: nlplab
           repository: ryomazda/nlplab_cuda
