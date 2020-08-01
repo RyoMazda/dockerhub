@@ -30,7 +30,6 @@ RUN rm -r ~/.cache
 
 # Settings
 COPY jupyter_notebook_config.py /root/.jupyter/
-COPY overrides.json /usr/local/share/jupyter/lab/settings/
 
 WORKDIR /work
 

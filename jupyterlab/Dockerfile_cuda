@@ -1,8 +1,8 @@
 FROM pytorch/pytorch:1.5.1-cuda10.1-cudnn7-devel as jupyterlab
 
 RUN apt-get update && apt-get install -y \
-    curl \
-    unzip && \
+      curl \
+      unzip && \
     curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
     apt-get install -y nodejs \
     && rm -rf /var/lib/apt/lists/*
@@ -30,7 +30,6 @@ RUN rm -r ~/.cache
 
 # Settings
 COPY jupyter_notebook_config.py /root/.jupyter/
-COPY overrides.json /usr/local/share/jupyter/lab/settings/
 
 WORKDIR /work
 
