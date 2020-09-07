@@ -73,3 +73,9 @@ docker build \
   --target japaterlab \
   jupyterlab
 ```
+
+
+### janlpjob
+* Based on python slim buster
+* mecab and neologd is installed for python
+* `janlpjob_fix` as fixed version of neologd
