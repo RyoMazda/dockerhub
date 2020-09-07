@@ -8,6 +8,7 @@ RUN apt update && apt install -y \
     swig \
     file \
     sudo \
+    make \
   && rm -rf /var/lib/apt/lists/*
 
 # https://pypi.org/project/mecab-python3/
