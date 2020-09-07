@@ -1,13 +1,14 @@
 FROM python:3.8.5-slim-buster as base
 
-RUN apt update && apt install -y \
+RUN apt-get update && apt-get install -y \
     mecab \
     mecab-ipadic-utf8 \
     libmecab-dev \
     git \
-    swig \
+    make \
+    curl \
+    xz-utils \
     file \
-    sudo \
   && rm -rf /var/lib/apt/lists/*
 
 # https://pypi.org/project/mecab-python3/
@@ -31,7 +32,10 @@ WORKDIR /work
 FROM base as fix
 WORKDIR /opt
 # Install from the release since we want reproducibility
-RUN curl -L "https://github.com/neologd/mecab-ipadic-neologd/archive/v0.0.6.zip"  --output neologd006.zip && \
+RUN apt-get update && apt-get install -y \
+    unzip \
+  && rm -rf /var/lib/apt/lists/* && \
+  curl -L "https://github.com/neologd/mecab-ipadic-neologd/archive/v0.0.6.zip"  --output neologd006.zip && \
     unzip neologd006.zip && rm neologd006.zip && \
     cd mecab-ipadic-neologd-0.0.6 && \
         mkdir /opt/neologd-0.0.6 && \

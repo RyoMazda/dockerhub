@@ -1,0 +1,15 @@
+on:
+  push:
+jobs:
+  sample_job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: docker/build-push-action@v1
+        with:
+          path: workflow_sample
+          username: ryomazda
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          tag_with_ref: true
+          target: base
+          repository: ryomazda/test
